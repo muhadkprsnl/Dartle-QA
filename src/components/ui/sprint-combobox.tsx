@@ -103,11 +103,18 @@ export function SprintComboBox({
               variant="ghost"
               size="icon"
               className="absolute right-0 h-8 w-8"
-              onClick={(e) => {
+              // onClick={(e) => {
+              //   e.preventDefault()
+              //   e.stopPropagation()
+              //   setCalendarOpen(!calendarOpen)
+              // }}
+
+              onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                 e.preventDefault()
                 e.stopPropagation()
                 setCalendarOpen(!calendarOpen)
               }}
+
             >
               <CalendarIcon className="h-4 w-4" />
             </Button>
