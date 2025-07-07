@@ -121,7 +121,9 @@ export async function onSubmitDev(
     console.log("📤 Submitting Dev Form:", values);
 
     try {
-        const response = await fetch("http://localhost:3001/api/devform", {
+        // const response = await fetch("http://localhost:3001/api/devform", {
+
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/devform`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -171,7 +173,7 @@ export async function onSubmitDev(
 //         const d = typeof date === "string" ? new Date(date) : new Date(date);
 
 //         if (isNaN(d.getTime())) {
-//             throw new Error(`Invalid date: ${date}`);
+//             throw new Error(`Invalid date: ${ date }`);
 //         }
 
 //         // Clone to avoid mutating original date
@@ -188,7 +190,7 @@ export async function onSubmitDev(
 // const safeParseNumber = (value: string | number, fieldName: string): number => {
 //     const num = typeof value === 'string' ? parseInt(value, 10) : value;
 //     if (isNaN(num)) {
-//         throw new Error(`Invalid number for ${fieldName}`);
+//         throw new Error(`Invalid number for ${ fieldName }`);
 //     }
 //     return num;
 // };
@@ -239,7 +241,7 @@ export async function onSubmitDev(
 
 //         if (!response.ok) {
 //             const errorData = await response.json().catch(() => ({}));
-//             throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
+//             throw new Error(errorData.message || `HTTP error! status: ${ response.status } `);
 //         }
 
 //         const data = await response.json();
@@ -264,7 +266,7 @@ export async function onSubmitDev(
 //             : "An unexpected error occurred";
 
 //         // Consider using a toast notification instead of alert
-//         alert(`Submission failed: ${errorMessage}`);
+//         alert(`Submission failed: ${ errorMessage } `);
 
 //         // Re-throw for additional error handling if needed
 //         throw error;
@@ -281,7 +283,8 @@ export async function onSubmitProd(
     console.log("📤 Submitting Prod Form:", values);
 
     try {
-        const response = await fetch("http://localhost:3001/api/prodform", {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/prodform`, {
+            // const response = await fetch("http://localhost:3001/api/prodform", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -387,8 +390,10 @@ export async function handleEditFormSubmit(
     };
 
     try {
-        const response = await fetch(
-            `http://localhost:3001/api/v1/reports/${updatedSprint._id}`,
+        // const response = await fetch(
+        //     `http://localhost:3001/api/v1/reports/${updatedSprint._id}`,
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/reports/${updatedSprint._id}`,
+
             {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
