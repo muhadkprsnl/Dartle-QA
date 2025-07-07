@@ -33,6 +33,8 @@ interface SprintData {
     totalBugs: number;
     developers: Developer[];
     environment?: string;
+    dueDate?: string;     // <-- add this
+    closeDate?: string;   // <-- add this
 }
 
 // Reusable form input component
@@ -260,11 +262,46 @@ const SprintDashboard = () => {
 
 
     // Handle clicking "Edit"
+    // const handleEditClick = (item: SprintData, env: "dev" | "prod") => {
+    //     setEditingId(item._id);
+    //     setEditingEnv(env);
+    //     setEditFormData({ ...item });
+    // };
+
     const handleEditClick = (item: SprintData, env: "dev" | "prod") => {
         setEditingId(item._id);
         setEditingEnv(env);
-        setEditFormData({ ...item });
+        setEditFormData({
+            ...item,
+            dueDate: item.dueDate || "",       // ensure present even if undefined
+            closeDate: item.closeDate || ""
+        });
     };
+
+
+    // Handle change in edit form
+    // const handleEditFormChange = (
+    //     e: React.ChangeEvent<HTMLInputElement>,
+    //     devIndex?: number,
+    //     field?: keyof Developer
+    // ) => {
+    //     const value = e.target.value;
+
+    //     if (devIndex !== undefined && field) {
+    //         const updatedDevelopers = [...editFormData.developers];
+    //         updatedDevelopers[devIndex] = {
+    //             ...updatedDevelopers[devIndex],
+    //             [field]: field === "passed" || field === "failed" ? parseInt(value) || 0 : value
+    //         };
+    //         setEditFormData({ ...editFormData, developers: updatedDevelopers });
+    //     } else {
+    //         setEditFormData({
+    //             ...editFormData,
+    //             [e.target.name]: value
+    //         });
+    //     }
+    // };
+
 
     // Handle change in edit form
     const handleEditFormChange = (
@@ -282,12 +319,16 @@ const SprintDashboard = () => {
             };
             setEditFormData({ ...editFormData, developers: updatedDevelopers });
         } else {
+            const fieldName = e.target.name;
+            const updatedValue = e.target.type === "date" ? value : value;
+
             setEditFormData({
                 ...editFormData,
-                [e.target.name]: value
+                [fieldName]: updatedValue
             });
         }
     };
+
 
 
 
@@ -416,6 +457,21 @@ const SprintDashboard = () => {
                                                     label="Version"
                                                     name="version"
                                                     value={editFormData.version}
+                                                    onChange={handleEditFormChange}
+                                                />
+                                                {/* //dateupdate */}
+                                                <FormInput
+                                                    label="Due Date"
+                                                    type="date"
+                                                    name="dueDate"
+                                                    value={editFormData.dueDate?.slice(0, 10) || ""}
+                                                    onChange={handleEditFormChange}
+                                                />
+                                                <FormInput
+                                                    label="Close Date"
+                                                    type="date"
+                                                    name="closeDate"
+                                                    value={editFormData.closeDate?.slice(0, 10) || ""}
                                                     onChange={handleEditFormChange}
                                                 />
                                                 <FormInput
