@@ -151,7 +151,7 @@ export async function onSubmitDev(
             alert("✅ Report saved with ID: " + data.id);
             resetForm();
             setIsRedirecting(true);
-            setTimeout(() => router.push("/table?tab=dev"), 200);
+            setTimeout(() => router.push("/main/table?tab=dev"), 200);
         } else {
             alert(data.error || "Failed to save dev report.");
         }
@@ -311,7 +311,7 @@ export async function onSubmitProd(
             alert("✅ Report saved with ID: " + data.id);
             resetForm();
             setIsRedirecting(true);
-            setTimeout(() => router.push("/table?tab=prod"), 200);
+            setTimeout(() => router.push("/main/table?tab=prod"), 200);
         } else {
             alert(data.error || "Failed to save prod report.");
         }
