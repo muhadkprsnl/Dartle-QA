@@ -32,7 +32,8 @@ export function useSummary(
         const fetchSummary = async () => {
             try {
                 setLoading(true);
-                const response = await axios.get("http://localhost:3001/api/v1/summary", {
+                const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/summary`, {
+                    // "http://localhost:3001/api/v1/summary", {
                     params: {
                         startDate,
                         endDate,

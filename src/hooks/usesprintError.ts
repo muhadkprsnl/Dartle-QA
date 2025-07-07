@@ -23,8 +23,11 @@ export function useSprintErrorComparison(startDate: string, endDate: string) {
             try {
                 setLoading(true)
                 const res = await fetch(
-                    `http://localhost:3001/api/v1/sprint-error-comparison?startDate=${startDate}&endDate=${endDate}`
+                    `${process.env.NEXT_PUBLIC_API_URL}/api/v1/sprint-error-comparison?startDate=${startDate}&endDate=${endDate}`
+                    // `http://localhost:3001/api/v1/sprint-error-comparison?startDate=${startDate}&endDate=${endDate}`
+
                 )
+
                 if (!res.ok) throw new Error("Failed to fetch sprint error data")
                 const data: SprintError[] = await res.json()
                 setSprints(data)
