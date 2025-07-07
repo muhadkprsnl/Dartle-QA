@@ -105,7 +105,8 @@ const SprintDashboard = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await fetch("http://localhost:3001/api/v1/reports");
+                // const res = await fetch("http://localhost:3001/api/v1/reports");
+                const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/login`);
                 if (!res.ok) throw new Error("Failed to fetch data");
                 const data = await res.json();
 
@@ -297,7 +298,9 @@ const SprintDashboard = () => {
         if (!confirmDelete) return;
 
         try {
-            const response = await fetch(`http://localhost:3001/api/v1/reports/${id}`, {
+            // const response = await fetch(`http://localhost:3001/api/v1/reports/${id}`, {
+
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/reports/${id}`, {
                 method: "DELETE",
             })
 
