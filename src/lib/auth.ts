@@ -21,9 +21,11 @@ export const authService = {
     login: async (username: string, password: string) => {
         // const res = await fetch('http://localhost:3001/api/login',
         // https://go-backend-nblb.onrender.com
+        // const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/login`, {
         // const res = await fetch('https://go-backend-nblb.onrender.com/api/login', {
 
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/login`, {
+
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ username, password }),

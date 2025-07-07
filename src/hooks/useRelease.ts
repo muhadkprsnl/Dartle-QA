@@ -42,7 +42,9 @@ export function useReleaseData({
                 params.append("status", statusFilter);
             }
 
-            const response = await fetch(`http://localhost:3001/api/v1/releases?${params.toString()}`);
+            // const response = await fetch(`http://localhost:3001/api/v1/releases?${params.toString()}`);
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/releases?${params.toString()}`);
+
 
             if (!response.ok) {
                 throw new Error("Failed to fetch releases");
