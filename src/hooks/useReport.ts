@@ -170,7 +170,9 @@ export default function useDonutData({ sprint, startDate, endDate }: UseDonutDat
         const fetchData = async () => {
             setLoading(true);
             try {
-                const url = new URL("http://localhost:3001/api/v1/analytics/donut");
+                // const url = new URL("http://localhost:3001/api/v1/analytics/donut");
+
+                const url = new URL(`${process.env.NEXT_PUBLIC_API_URL}/api/v1//analytics/donut`);
 
                 if (isSprintValid) {
                     url.searchParams.append("sprint", sprint!.trim());
