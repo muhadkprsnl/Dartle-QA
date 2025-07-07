@@ -26,18 +26,31 @@ export function Footer() {
                     className="hover:bg-gray-900 p-2 h-auto" // Custom button styling
                 >
                     <Link href="https://academy.dartle.app/" className="flex items-center gap-2">
+                        {/* <Image
+                            src="https://academy-dev.dartle.app/images/dartle_logo_navbar.png"
+                            alt="Dartle Logo"
+                            width={60}
+                            height={30}
+                            className="h-6 w-auto"
+                        /> */}
                         <Image
                             src="https://academy-dev.dartle.app/images/dartle_logo_navbar.png"
                             alt="Dartle Logo"
-                            width={24}
-                            height={24}
-                            className="h-6 w-auto"
+                            width={30}
+                            height={100}
+                            className="object-contain"
+                            style={{
+                                marginRight: '12px',
+                                marginTop: '10px',
+                            }}
                         />
-                        <span className="text-sm font-medium">Dartle</span>
+                        <span className="text-sm text-gray-400">Copyright © 2025.</span>
+                        <div className="text-sm text-white-400">Dartle</div>
+                        <div className="text-sm text-gray-400">Version: 1.0.0</div>
+
                     </Link>
                 </Button>
-                <div className="text-sm text-gray-400">v1.0.0</div>
             </div>
-        </footer>
+        </footer >
     );
 }

@@ -100,13 +100,12 @@ const SprintDashboard = () => {
 
 
 
-
+    // const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1//api/v1/reports`);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                // const res = await fetch("http://localhost:3001/api/v1/reports");
-                const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/login`);
+                const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/reports`);
                 if (!res.ok) throw new Error("Failed to fetch data");
                 const data = await res.json();
 
@@ -297,9 +296,9 @@ const SprintDashboard = () => {
         console.log("Deleting ID:", id);
         if (!confirmDelete) return;
 
-        try {
-            // const response = await fetch(`http://localhost:3001/api/v1/reports/${id}`, {
+        // const response = await fetch(`http://localhost:3001/api/v1/reports/${id}`, {
 
+        try {
             const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/reports/${id}`, {
                 method: "DELETE",
             })
@@ -308,7 +307,7 @@ const SprintDashboard = () => {
                 alert("Report deleted successfully!");
                 // setIsRedirecting(true); // Step 2: show loading UI
                 setTimeout(() => {
-                    router.push(`/table?tab=${activeTab}`);
+                    router.push(`/main/table?tab=${activeTab}`);
                 }, 200); // small delay to show animation (optional)
 
                 if (activeTab === "dev") {

@@ -1,3 +1,5 @@
+
+
 "use client";
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -10,7 +12,6 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Icons } from "@/components/ui/icons"
 import toast from "react-hot-toast"
 import Loading from "@/app/main/loading"
-import Image from 'next/image';
 
 export default function LoginPage() {
     const [email, setEmail] = useState('');
@@ -60,25 +61,13 @@ export default function LoginPage() {
         <div className="flex min-h-screen items-center justify-center bg-gray-100 p-4 dark:bg-gray-900">
             <Card className="w-full max-w-md">
                 <CardHeader className="space-y-1">
-                    <CardTitle className="text-2xl">
-                        <div style={{ display: 'flex', alignItems: 'center' }}>
-                            <Image
-                                src="https://academy-dev.dartle.app/images/dartle_logo_navbar.png"
-                                alt="Dartle Logo"
-                                width={30}
-                                height={100}
-                                className="object-contain"
-                                style={{
-                                    marginRight: '12px',
-                                    marginTop: '10px',
-                                }}
-                            />
-                            <p> Login to your account</p>
-                        </div>
-                    </CardTitle>
+                    <CardTitle className="text-2xl">Login to your account</CardTitle>
+                    <CardDescription>
+                        Enter your email and password below to login
+                    </CardDescription>
                 </CardHeader>
                 <CardContent className="grid gap-4">
-                    {/* <div className="grid grid-cols-2 gap-6">
+                    <div className="grid grid-cols-2 gap-6">
                         <Button variant="outline"
                             onClick={() => toast.error("GitHub login not implemented yet", {
                                 duration: 3000,
@@ -97,12 +86,13 @@ export default function LoginPage() {
                             <Icons.google className="mr-2 h-4 w-4" />
                             Google
                         </Button>
-                    </div> */}
-                    <hr />
+                    </div>
                     <div className="relative">
                         <CardDescription>
                             Enter your email and password below to login
                         </CardDescription>
+                        {/* </div> */}
+
                     </div>
                     {error && <div className="text-red-500 text-sm">{error}</div>}
                     <form onSubmit={handleSubmit} className="grid gap-4">
