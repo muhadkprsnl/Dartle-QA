@@ -40,11 +40,41 @@
 // }
 
 // src/app/layout.tsx
+// import type { Metadata } from "next";
+// import { GeistSans } from 'geist/font/sans';
+// import { GeistMono } from 'geist/font/mono';
+// import "./globals.css";
+// import { Toaster } from "react-hot-toast";
+// import { ToastProvider } from '@/components/ui/use-toast';
+
+// export const metadata: Metadata = {
+//   title: "Dartle",
+//   description: "Your application description here",
+// };
+
+// export default function RootLayout({
+//   children,
+// }: Readonly<{
+//   children: React.ReactNode;
+// }>) {
+//   return (
+//     <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
+//       <body className="min-h-screen antialiased bg-white">
+
+//         {children}
+
+//         <Toaster position="top-right" reverseOrder={false} />
+//       </body>
+//     </html >
+//   );
+// }
+
 import type { Metadata } from "next";
 import { GeistSans } from 'geist/font/sans';
 import { GeistMono } from 'geist/font/mono';
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
+import ClientProviders from "@/components/client-providers"; // New wrapper component
 
 export const metadata: Metadata = {
   title: "Dartle",
@@ -59,8 +89,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
       <body className="min-h-screen antialiased bg-white">
-        {children}
-        <Toaster position="top-right" reverseOrder={false} />
+        {/* Wrap context providers in a client component */}
+        <ClientProviders>
+          {children}
+          <Toaster position="top-right" reverseOrder={false} />
+        </ClientProviders>
       </body>
     </html>
   );

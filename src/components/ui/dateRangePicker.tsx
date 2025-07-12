@@ -64,3 +64,99 @@ export const DateRangePicker: React.FC<Props> = ({ date, setDate }) => {
   );
 };
 
+// import * as React from "react";
+// import { format } from "date-fns";
+// import { CalendarIcon } from "lucide-react";
+// import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover";
+// import { Calendar } from "@/components/ui/calendar";
+// import { Button } from "@/components/ui/button";
+// import { cn } from "@/lib/utils";
+
+// export type DateRange = {
+//   from: Date | null;
+//   to: Date | null;
+// };
+
+// interface DateRangePickerProps {
+//   date?: DateRange;
+//   onDateChange?: (range: DateRange) => void;
+//   className?: string;
+//   align?: "start" | "end" | "center";
+//   disabled?: boolean;
+//   placeholder?: string;
+// }
+
+// export const DateRangePicker = React.forwardRef<HTMLDivElement, DateRangePickerProps>(
+//   (
+//     {
+//       date = { from: null, to: null },
+//       onDateChange,
+//       className,
+//       align = "start",
+//       disabled = false,
+//       placeholder = "Pick a date range",
+//     },
+//     ref
+//   ) => {
+//     const [isOpen, setIsOpen] = React.useState(false);
+//     const [internalDate, setInternalDate] = React.useState<DateRange>(date);
+
+//     React.useEffect(() => {
+//       setInternalDate(date);
+//     }, [date]);
+
+//     const handleSelect = (range: { from?: Date; to?: Date } | undefined) => {
+//       const newRange = {
+//         from: range?.from ?? null,
+//         to: range?.to ?? null,
+//       };
+//       setInternalDate(newRange);
+//       onDateChange?.(newRange);
+//     };
+
+//     const displayText = React.useMemo(() => {
+//       if (!internalDate.from) {
+//         return placeholder;
+//       }
+//       if (!internalDate.to) {
+//         return format(internalDate.from, "MMM dd, yyyy");
+//       }
+//       return `${format(internalDate.from, "MMM dd, yyyy")} - ${format(internalDate.to, "MMM dd, yyyy")}`;
+//     }, [internalDate, placeholder]);
+
+//     return (
+//       <Popover open={isOpen} onOpenChange={setIsOpen}>
+//         <PopoverTrigger asChild>
+//           <Button
+//             variant="outline"
+//             disabled={disabled}
+//             className={cn(
+//               "w-[260px] justify-start text-left font-normal",
+//               !internalDate.from && "text-muted-foreground",
+//               className
+//             )}
+//           >
+//             <CalendarIcon className="mr-2 h-4 w-4" />
+//             {displayText}
+//           </Button>
+//         </PopoverTrigger>
+//         <PopoverContent className="w-auto p-0" align={align} ref={ref}>
+//           <Calendar
+//             mode="range"
+//             selected={{
+//               from: internalDate.from ?? undefined,
+//               to: internalDate.to ?? undefined,
+//             }}
+//             onSelect={handleSelect}
+//             numberOfMonths={2}
+//             defaultMonth={internalDate.from ?? new Date()}
+//             initialFocus
+//             disabled={disabled}
+//           />
+//         </PopoverContent>
+//       </Popover>
+//     );
+//   }
+// );
+
+// DateRangePicker.displayName = "DateRangePicker";

@@ -253,8 +253,9 @@ export default function Dashboard() {
                         }
                     </div >
 
+
                     {/* Bug Status Charts */}
-                    < div className="mb-8" >
+                    < div style={{ marginTop: '20px' }} className="mb-8 " >
                         <h2 className="text-xl font-semibold mb-4 flex items-center">
                             <span className="mr-2">📊</span> Developers performance
                         </h2>
